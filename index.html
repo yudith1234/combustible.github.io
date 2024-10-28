@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ingreso de Combustible</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css"> <!-- Llamada a styles.css -->
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="index.php">VILLATRUCKS S.A.C.</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index.php">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="ingreso.php">Ingreso de Combustible</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="reportes.php">Reportes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="configuracion.php">Configuración</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+</body>
+<body>
+    <?php include 'header.php'; ?> <!-- Incluir el header -->
+
+    <div class="container mt-5">
+        <h2>Ingreso de Combustible</h2>
+
+        <form action="index.php?action=guardarIngreso" method="POST">
+            <div class="form-group">
+                <label for="codigo">Código Autogenerado</label>
+                <input type="text" class="form-control" id="codigo" name="codigo" value="I001" readonly> <!-- Mostrar el valor de $codigo -->
+            </div>
+            <div class="form-group">
+                <label for="fecha">Fecha</label>
+                <input type="date" class="form-control" id="fecha" name="fecha" required>
+            </div>
+            <div class="form-group">
+                <label for="guia_remision">Guía de Remisión</label>
+                <input type="text" class="form-control" id="guia_remision" name="guia_remision" required>
+            </div>
+            <div class="form-group">
+                <label for="proveedor">Proveedor</label>
+                <select class="form-control" id="proveedor" name="proveedor" required>
+                    <option value="">Seleccione un proveedor</option>
+                    <option value="1">Proveedor 1</option>
+                    <option value="2">Proveedor 2</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="producto">Producto</label>
+                <select class="form-control" id="producto" name="producto" required>
+                    <option value="">Seleccione un producto</option>
+                    <option value="Gasolina">Gasolina</option>
+                    <option value="Diesel">Diesel</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="unidad">Unidad</label>
+                <select class="form-control" id="unidad" name="unidad" required>
+                    <option value="Galón">Galón</option>
+                    <option value="Litro">Litro</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="cantidad">Cantidad</label>
+                <input type="number" class="form-control" id="cantidad" name="cantidad" required>
+            </div>
+            <div class="form-group">
+                <label for="observacion">Observación</label>
+                <input type="text" class="form-control" id="observacion" name="observacion" maxlength="50">
+            </div>
+            <div class="form-group">
+                <label for="stock_actual">Stock Actual</label>
+                <input type="text" class="form-control" id="stock_actual" value="300" readonly> <!-- Mostrar el valor de $stock -->
+            </div>
+            <div class="mt-3">
+                <button type="submit" class="btn btn-primary">Guardar</button>
+                <button type="reset" class="btn btn-secondary">Buscar Doc</button>
+                <button type="button" class="btn btn-terciario">Limpiar</button>
+                <button type="button" class="btn btn-cuaternario">Borrar</button>
+                <button type="button" class="btn btn-cuaternario">Modificar</button>
+                <a href="index.php" class="btn btn-danger">Salir</a>
+            </div>
+        </form>
+
+        <style>
+            .btn-terciario {
+                background-color: #ffcc00;
+                color: white;
+            }
+
+            .btn-cuaternario {
+                background-color: #33cc33;
+                color: white;
+            }
+        </style>
+
+        <!-- Tabla de registros de ingreso de combustible -->
+        <div class="mt-5">
+            <h3>Registros de Ingreso de Combustible</h3>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Producto</th>
+                        <th>Unidad</th>
+                        <th>Cantidad</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>001</td>
+                        <td>Gasolina</td>
+                        <td>Galón</td>
+                        <td>100</td>
+                    </tr>
+                    <tr>
+                        <td>002</td>
+                        <td>Diesel</td>
+                        <td>Litro</td>
+                        <td>200</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" class="text-center font-weight-bold">Nueva Fila Agregada</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+    
+</body>
+
+</html>
+<?php include 'footer.php'; ?> <!-- Incluir el footer -->
+
+<footer class="bg-dark text-white mt-5 p-2 text-center">
+    <p>&copy; <?php echo date("Y"); ?> Villatrucks. Todos los derechos reservados.</p>
+</footer>
+
+<!-- Scripts de Bootstrap y jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+
+
+
+
+
